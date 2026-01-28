@@ -10,9 +10,9 @@ export async function uploadEvidence(formData: FormData) {
   
   // 1. 身份鉴权
   const { data: { user }, error: authError } = await supabase.auth.getUser();
-  if (authError || !user) {
-    return { error: 'Unauthorized: 用户未登录', success: false };
-  }
+  //if (authError || !user) {
+    //return { error: 'Unauthorized: 用户未登录', success: false };
+  //}
 
   // 2. 提取数据
   const file = formData.get('file') as File;
@@ -86,7 +86,7 @@ export async function uploadEvidence(formData: FormData) {
   const { error: dbError } = await supabase
     .from('evidence_logs')
     .insert({
-      user_id: user.id,
+      user_id: user?.id || null,
       file_hash: clientHash,
       hash_algorithm: 'sha256',
       storage_path: uploadData.path,
