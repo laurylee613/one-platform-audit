@@ -10,6 +10,10 @@ export async function uploadEvidence(formData: FormData) {
   
   // 1. 身份鉴权
   const { data: { user }, error: authError } = await supabase.auth.getUser();
+  
+ 
+// 🟢 新增这一行：如果没有用户，就叫 'anonymous'
+   const userIdOrAnon = user?.id || 'anonymous';
   //if (authError || !user) {
     //return { error: 'Unauthorized: 用户未登录', success: false };
   //}
@@ -24,8 +28,12 @@ export async function uploadEvidence(formData: FormData) {
 
   // 3. 物理存储 (Storage Upload)
   const fileExt = file.name.split('.').pop();
-  const fileName = `${user.id}/${Date.now()}_${Math.random().toString(36).substr(2, 9)}.${fileExt}`;
-  
+   // 🔴 修改前：
+  //const fileName = `${user.id}/${Date.now()}_${Math.random().toString(36).substr(2, 9)}.${fileExt}`;
+   
+  // 🟢 修改后：
+  const fileName = `${userIdOrAnon}/${Date.now()}_${Math.random().toString(36).substr(2, 9)}.${fileExt}`;
+
   const { data: uploadData, error: uploadError } = await supabase.storage
     .from('evidence-vault')
     .upload(fileName, file);
@@ -56,8 +64,10 @@ export async function uploadEvidence(formData: FormData) {
 
     // 4.2 调用 Coze
     // 注意：这里我们传入 user.id 是为了让 Coze 区分会话
-    const cozeResponse = await auditImageWithCoze(signedUrlData.signedUrl, user.id);
+//    const cozeResponse = await auditImageWithCoze(signedUrlData.signedUrl, user.id);
+    const cozeResponse = await auditImageWithCoze(signedUrlData.signedUrl, userIdOrAnon);
     aiResult = cozeResponse.audit_result; // 获取核心结果部分
+
 
     console.log('🤖 AI 审计完成:', aiResult?.status);
 
