@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 // 1. 引入新组件
-import CozeChat from "@/components/CozeChat"; 
+import CozeWidget from "@/components/CozeWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +33,28 @@ export default function RootLayout({
         
         {/* 2. 使用新组件 (这里不再有函数报错，因为逻辑都封装在 CozeChat 内部了) */}
         <CozeChat />
+
+        // ... metadata ...
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {children}
         
+        {/* 👇 使用新组件 */}
+        <CozeWidget />
+        
+      </body>
+    </html>
+  );
+}
+
+
       </body>
     </html>
   );
