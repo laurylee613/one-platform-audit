@@ -24,9 +24,9 @@ export default function CozeWidget() {
             auth: {
               type: 'token',
               // 👇 再次确认这里填的是您的真实 Token
-              token: 'pat_az1k8U756vT94ia0DJmQg2WFuhxOASdico1Iko4dANxWxZTycVbSM46BeXO36i9U',
+              token: 'pat_az1k8U756vt94ia0DJmQg2WFuhxOASdicOlIko4dANxWxZTycVbSM46BeXO36i9U',
               onRefreshToken: function () {
-                return 'pat_az1k8U756vT94ia0DJmQg2WFuhxOASdico1Iko4dANxWxZTycVbSM46BeXO36i9U'
+                return 'pat_az1k8U756vt94ia0DJmQg2WFuhxOASdicOlIko4dANxWxZTycVbSM46BeXO36i9U'
               }
             }
           });
