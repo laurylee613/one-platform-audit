@@ -1,10 +1,10 @@
-'use client'; // 声明为客户端组件
+'use client';
 
 import { useEffect } from 'react';
 
 export default function CozeWidget() {
   useEffect(() => {
-    // 1. 创建 script 标签
+    // 1. 动态创建 script 标签 (原生 JS，绕过 Next.js 的检查)
     const script = document.createElement('script');
     script.src = "https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.19/libs/cn/index.js";
     script.async = true;
@@ -23,7 +23,7 @@ export default function CozeWidget() {
             },
             auth: {
               type: 'token',
-              // 👇 请确认这里是您的真实 Token
+              // 👇 再次确认这里填的是您的真实 Token
               token: 'pat_az1k8U756vT94ia0DJmQg2WFuhxOASdico1Iko4dANxWxZTycVbSM46BeXO36i9U',
               onRefreshToken: function () {
                 return 'pat_az1k8U756vT94ia0DJmQg2WFuhxOASdico1Iko4dANxWxZTycVbSM46BeXO36i9U'
@@ -33,16 +33,16 @@ export default function CozeWidget() {
       }
     };
 
-    // 3. 挂载到 body
+    // 3. 挂载到页面
     document.body.appendChild(script);
 
-    // 4. 清理函数 (可选)
+    // 4. 清理机制
     return () => {
       if (document.body.contains(script)) {
         document.body.removeChild(script);
       }
     };
-  }, []); // 空数组表示只在加载时运行一次
+  }, []);
 
-  return null; // 这个组件不渲染任何 HTML 标签
+  return null; // 不渲染任何 Next.js 组件
 }
