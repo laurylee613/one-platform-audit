@@ -56,7 +56,7 @@ export async function uploadEvidence(formData: FormData) {
     const { data: signedUrlData, error: signError } = await supabase
       .storage
       .from('evidence-vault')
-      .createSignedUrl(fileName, 60); // 60秒有效期，足够AI看一眼了
+      .createSignedUrl(fileName, 60*60); // 60秒有效期，足够AI看一眼了
 
     if (signError || !signedUrlData) {
       throw new Error('无法生成签名链接供 AI 审计');

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastProvider } from "@/components/ui/toast";
+import Script from 'next/script'; // ✅ 导入 Script 组件
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,34 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ToastProvider>{children}</ToastProvider>
+        {children}
+
+        {/* Coze AI 悬浮球集成 */}
+        <Script
+          id="coze-sdk"
+          strategy="afterInteractive"
+          src="https://lf-cdn.coze.cn/obj/unpkg/flow-platform/chat-app-sdk/1.2.0-beta.19/libs/cn/index.js"
+          onLoad={() => {
+            // @ts-ignore
+            new CozeWebSDK.WebChatClient({
+              config: {
+                bot_id: '7601481250146172962', // 您的 Bot ID
+              },
+              componentProps: {
+                title: 'One Platform 助手',
+              },
+              auth: {
+                type: 'token',
+                // 👇 请务必在这里填入您刚才生成的新 PAT Token，保留单引号
+                token: 'pat_az1k8U756vt94ia0DJmQg2WFuhxOASdicOlIko4dANxWxZTycVbSM46BeXO36i9U', 
+                onRefreshToken: function () {
+                  return 'pat_az1k8U756vt94ia0DJmQg2WFuhxOASdicOlIko4dANxWxZTycVbSM46BeXO36i9U'
+                }
+              }
+            });
+          }}
+        />
+        
       </body>
     </html>
   );
