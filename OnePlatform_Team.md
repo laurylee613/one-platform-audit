@@ -65,7 +65,7 @@ A: 我们采用 Supabase RLS (Row Level Security) 行级安全策略，实现了
 ## 5. 碳硅特遣队·五维战略 (v3.1 New)**Q: 你们的战略阵法是什么？**
 A: 我们采用“五维战略阵法”，以 CEO 为能量中枢，CTO 与 CMO 为双翼，构建攻守兼备的战斗队形。
 
-![五维战略图谱](这里填入图1-1的图片链接)
+![五维战略图谱](https://www.oneplatform.com.cn/images/strategy-matrix.png)
 
 * **中枢 (势)**: CEO (李先森) —— 能量源点。
 * **左翼 (术)**: CTO (Munger) —— 技术支撑。
@@ -76,7 +76,7 @@ A: 我们采用“五维战略阵法”，以 CEO 为能量中枢，CTO 与 CMO 
 ## 6. 生态同心圆 (Ecosystem)**Q: 什么是生态同心圆？**
 A: 这是 One Platform 的分层架构，从内核到外环层层递进。
 
-![生态同心圆](这里填入图2-1的图片链接)
+![生态同心圆](https://www.oneplatform.com.cn/images/ecosystem.png)
 
 * **内核**: 技术引擎。
 * **内环 (Shield)**: One Trust 基础设施。
