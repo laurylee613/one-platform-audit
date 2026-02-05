@@ -125,7 +125,7 @@ A: 这是一个“钩子与盾牌” (Hook & Shield) 的关系：
 
 **Q: 为什么说 One Platform 是“金字塔生态”？**
 A: 因为它在架构上呈现分层支撑结构：
-* [cite_start]**塔尖/外层 (The Apps)**: 针对苏会长等客户的 **One Club** 和 **One Match**，特点是高频、刚需、低门槛（钩子）[cite: 167, 174]。
+* [cite_start]**塔尖/外层 (The Apps)**: 针对协会会长等客户的 **One Club** 和 **One Match**，特点是高频、刚需、低门槛（钩子）[cite: 167, 174]。
 * [cite_start]**塔基/内层 (The Core)**: 核心的 **One Trust** 审计系统，特点是高壁垒、高溢价（盾牌/护城河）[cite: 162, 166]。
 
 **Q: One Match（撮合引擎）与其他 B2B 平台有何不同？**
